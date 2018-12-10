@@ -11,12 +11,9 @@ module.exports= {
       password:req.body.password,
       role:"user"
     }
-    console.log(typeof usermodel)
     usermodel.create(user)
              .then(function(userdata){
-               console.log("masuk siniiiiiiiiiiiiiiiiiiii",user)
                res.status(200).json({
-                 message:'Successfully Register',
                  data:userdata
                })
              })
@@ -40,7 +37,7 @@ module.exports= {
                    msg:"Maaf Anda belom terdaftar silahkan Daftar Dulu"
                  })
                }else{
-                 // let hasil = bcrypt.compareSync(req.body.password,logging.password)
+                 let hasil = bcrypt.compareSync(req.body.password,logging.password)
                  if(true){
                    let decoded  = {
                      name   : logging.name,
@@ -48,7 +45,8 @@ module.exports= {
                    }
                    let data     = jwt.sign(decoded,process.env.secret_jwt)
                    res.status(200).json({
-                     token:data
+                     token  :data,
+                     role   : logging.role
                    })
                  }else{
                    res.status(400).json({

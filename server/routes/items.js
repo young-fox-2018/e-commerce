@@ -6,7 +6,7 @@ router.get('/',controller.findall)
 router.post('/',controller.create)
 router.delete('/:id',controller.delete)
 router.get('/:id',controller.findone)
-router.put('edit/:id',controller.itemupdating)
+router.put('/edit/:id',controller.itemupdating)
 
 
 
